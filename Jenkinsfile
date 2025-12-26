@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        APP_NAME = "Reka-Storage"
-        CONTAINER_NAME = "Reka-Storage"
+        APP_NAME = "storage-api"
+        CONTAINER_NAME = "REKA-Service-Storage"
     }
 
     stages {
@@ -31,7 +31,7 @@ pipeline {
                 echo "🏗 Build Docker image (no cache)"
                 sh '''
                     set -x
-                    docker compose build --no-cache
+                    docker compose -f docker-compose.yml build --no-cache
                 '''
             }
         }
@@ -41,7 +41,7 @@ pipeline {
                 echo "🚀 Deploy container"
                 sh '''
                     set -x
-                    docker compose up -d
+                    docker compose -f docker-compose.yml up -d
                 '''
             }
         }
