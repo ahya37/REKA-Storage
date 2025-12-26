@@ -9,5 +9,5 @@ services:
     ports:
       - "4001:4001"
     env_file:
-      - .env
+      - /var/www/reka-storage-api-application/.env
     restart: unless-stopped
