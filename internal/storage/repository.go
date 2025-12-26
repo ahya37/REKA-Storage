@@ -1,0 +1,29 @@
+package storage
+
+import (
+	"context"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo"
+)
+
+type Repository struct {
+	collection *mongo.Database
+}
+
+func NewRepository(collection *mongo.Database) *Repository {
+	return &Repository{collection: collection}
+}
+
+func (r *Repository) Insert(
+	ctx context.Context,
+	file *File,
+) error {
+	res, err := r.collection.Collection("files").InsertOne(ctx, file)
+	if err != nil {
+		return err
+	}
+
+	file.ID = res.InsertedID.(primitive.ObjectID)
+	return nil
+}
