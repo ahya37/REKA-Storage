@@ -56,3 +56,24 @@ func (h *Handler) Upload(c *gin.Context) {
 		result,
 	)
 }
+
+func (h *Handler) ListByUser(c *gin.Context) {
+	userID := c.MustGet("userID").(string)
+
+	files, err := h.service.ListByUser(c.Request.Context(), userID)
+	if err != nil {
+		response.Error(
+			c,
+			http.StatusInternalServerError,
+			err.Error(),
+		)
+		return
+	}
+
+	response.Success(
+		c,
+		http.StatusOK,
+		"Files retrieved successfully",
+		files,
+	)
+}

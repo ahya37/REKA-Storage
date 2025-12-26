@@ -3,6 +3,7 @@ package storage
 import (
 	"context"
 
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -26,4 +27,23 @@ func (r *Repository) Insert(
 
 	file.ID = res.InsertedID.(primitive.ObjectID)
 	return nil
+}
+
+func (r *Repository) ListByUser(ctx context.Context, userID string) ([]*File, error) {
+	filter := bson.M{
+		"user_id": userID,
+	}
+
+	cursor, err := r.collection.Collection("files").Find(ctx, filter)
+	if err != nil {
+		return nil, err
+	}
+	defer cursor.Close(ctx)
+
+	var files []*File
+	if err := cursor.All(ctx, &files); err != nil {
+		return nil, err
+	}
+
+	return files, nil
 }

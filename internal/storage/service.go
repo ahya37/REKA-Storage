@@ -75,3 +75,12 @@ func (s *Service) Upload(
 
 	return fileModel, nil
 }
+
+func (s *Service) ListByUser(ctx context.Context, userID string) ([]*File, error) {
+	files, err := s.repo.ListByUser(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+
+	return files, nil
+}

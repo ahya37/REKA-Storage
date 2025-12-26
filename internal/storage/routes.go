@@ -7,4 +7,5 @@ func RegisterRoutes(
 	handler *Handler,
 ) {
 	r.POST("/upload", handler.Upload)
+	r.GET("/list", handler.ListByUser)
 }
