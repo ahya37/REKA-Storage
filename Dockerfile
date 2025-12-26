@@ -33,7 +33,7 @@ RUN apk add --no-cache ca-certificates
 COPY --from=builder /app/app .
 
 # Copy env file (optional)
-COPY .env .env
+# COPY .env .env
 
 EXPOSE 4001
 
