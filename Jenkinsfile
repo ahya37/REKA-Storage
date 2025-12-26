@@ -31,6 +31,7 @@ pipeline {
                 echo "🏗 Build Docker image (no cache)"
                 sh '''
                     set -x
+                    # Build image tanpa copy .env
                     docker compose -f docker-compose.yml build --no-cache
                 '''
             }
@@ -41,6 +42,7 @@ pipeline {
                 echo "🚀 Deploy container"
                 sh '''
                     set -x
+                    # Gunakan env_file host sehingga container dapat environment
                     docker compose -f docker-compose.yml up -d
                 '''
             }
