@@ -2,7 +2,7 @@ package auth
 
 import (
 	"net/http"
-	"reka-storage/internal/shared/response"
+	"reka-storage/src/shared/response"
 
 	"github.com/gin-gonic/gin"
 )

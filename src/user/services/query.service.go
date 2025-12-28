@@ -2,8 +2,8 @@ package services
 
 import (
 	"context"
-	"reka-storage/internal/user/models"
-	"reka-storage/internal/user/repositories"
+	"reka-storage/src/user/models"
+	"reka-storage/src/user/repositories"
 )
 
 type Service struct {

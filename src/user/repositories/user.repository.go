@@ -2,7 +2,7 @@ package repositories
 
 import (
 	"context"
-	"reka-storage/internal/user/models"
+	"reka-storage/src/user/models"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"

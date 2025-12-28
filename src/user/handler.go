@@ -2,8 +2,8 @@ package user
 
 import (
 	"net/http"
-	"reka-storage/internal/shared/response"
-	"reka-storage/internal/user/services"
+	"reka-storage/src/shared/response"
+	"reka-storage/src/user/services"
 
 	"github.com/gin-gonic/gin"
 )

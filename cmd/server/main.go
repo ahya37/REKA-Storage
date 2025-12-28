@@ -15,12 +15,12 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"reka-storage/internal/auth"
-	"reka-storage/internal/shared/middleware"
-	"reka-storage/internal/storage"
-	"reka-storage/internal/user"
-	"reka-storage/internal/user/repositories"
-	"reka-storage/internal/user/services"
+	"reka-storage/src/auth"
+	"reka-storage/src/shared/middleware"
+	"reka-storage/src/storage"
+	"reka-storage/src/user"
+	"reka-storage/src/user/repositories"
+	"reka-storage/src/user/services"
 )
 
 func main() {

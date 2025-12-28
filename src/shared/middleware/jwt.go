@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-	"reka-storage/internal/shared/response"
+	"reka-storage/src/shared/response"
 	"strings"
 
 	"github.com/gin-gonic/gin"
