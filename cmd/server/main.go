@@ -18,6 +18,9 @@ import (
 	"reka-storage/internal/auth"
 	"reka-storage/internal/shared/middleware"
 	"reka-storage/internal/storage"
+	"reka-storage/internal/user"
+	"reka-storage/internal/user/repositories"
+	"reka-storage/internal/user/services"
 )
 
 func main() {
@@ -89,12 +92,23 @@ func main() {
 	authHandler := auth.NewHandler(authService)
 	//=== END Auth Wiring
 
+	//=== START User Wiring
+	userRepo := repositories.NewUserRepository(db)
+	userService := services.NewService(userRepo)
+	userHandler := user.NewHandler(userService)
+	//=== END User Wiring
+
 	//=== START API Routes
 	api := r.Group("/api")
 	{
 		//AUTH
 		authGroup := api.Group("/auth")
 		authGroup.POST("/login", authHandler.Login)
+
+		//USER
+		userGroup := api.Group("/user")
+		userGroup.Use(middleware.AuthMiddleware())
+		userGroup.GET("/profile", userHandler.Profile)
 
 		// STORAGE
 		storageGroup := api.Group("/storage")
