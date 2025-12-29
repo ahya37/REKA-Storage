@@ -6,5 +6,6 @@ func RegisterRoutes(
 	r *gin.RouterGroup,
 	handler *Handler,
 ) {
-	r.POST("/profile", handler.Profile)
+	r.GET("/profile", handler.Profile)
+	r.POST("/register", handler.Register)
 }

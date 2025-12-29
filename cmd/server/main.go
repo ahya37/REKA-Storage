@@ -109,6 +109,7 @@ func main() {
 		userGroup := api.Group("/user")
 		userGroup.Use(middleware.AuthMiddleware())
 		userGroup.GET("/profile", userHandler.Profile)
+		userGroup.POST("/register", userHandler.Register)
 
 		// STORAGE
 		storageGroup := api.Group("/storage")
