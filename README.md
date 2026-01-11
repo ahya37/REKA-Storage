@@ -11,7 +11,7 @@ A robust file storage service built with Go, utilizing MinIO for object storage 
 - **Authentication:** JWT (JSON Web Tokens)
 - **Configuration:** Godotenv 
 
-## 📋 Prerequisites
+## 📋 Prerequisites 
 
 Before running the application, ensure you have the following installed:
 
