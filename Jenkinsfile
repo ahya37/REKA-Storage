@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         APP_NAME = "REKA-Cloude-Storage"
-        CONTAINER_NAME = "REKA-Cloude-Storage"
+        CONTAINER_NAME = "REKA-Cloude-Storage" 
     }
 
     stages {
