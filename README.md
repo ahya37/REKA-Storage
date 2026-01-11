@@ -8,7 +8,7 @@ A robust file storage service built with Go, utilizing MinIO for object storage 
 - **Framework:** Gin Web Framework
 - **Database:** MongoDB
 - **Object Storage:** MinIO
-- **Authentication:** JWT (JSON Web Tokens)
+- **Authentication:** JWT (JSON Web Tokens).
 - **Configuration:** Godotenv 
 
 ## 📋 Prerequisites 
