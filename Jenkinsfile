@@ -14,7 +14,7 @@ pipeline {
                 checkout scm
             }
         }
-
+  
         stage('Stop Old Container') {
             steps {
                 echo "🛑 Stop and remove old container if exists"
