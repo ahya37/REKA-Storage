@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        APP_NAME = "storage-api"
-        CONTAINER_NAME = "REKA-Service-Storage"
+        APP_NAME = "reka-cloude-storage"
+        CONTAINER_NAME = "REKA-Cloude-Storage"
     }
 
     stages {
