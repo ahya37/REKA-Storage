@@ -21,6 +21,10 @@ import (
 	"reka-storage/src/user"
 	"reka-storage/src/user/repositories"
 	"reka-storage/src/user/services"
+
+	userstorage "reka-storage/src/user-storage"
+	UserStorageRepository "reka-storage/src/user-storage/repositories"
+	userServices "reka-storage/src/user-storage/services"
 )
 
 func main() {
@@ -98,6 +102,12 @@ func main() {
 	userHandler := user.NewHandler(userService)
 	//=== END User Wiring
 
+	//=== START User Storage Wiring
+	userStorageRepo := UserStorageRepository.NewUserStorageRepository(db)
+	userStorageService := userServices.NewUserStorageService(userStorageRepo)
+	userStorageHandler := userstorage.NewUserStorageHandler(userStorageService)
+	// === END User Storage Wiring
+
 	//=== START API Routes
 	api := r.Group("/api")
 	{
@@ -115,6 +125,11 @@ func main() {
 		storageGroup := api.Group("/storage")
 		storageGroup.Use(middleware.AuthMiddleware())
 		storage.RegisterRoutes(storageGroup, fileHandler)
+
+		//USAGE STORAGE
+		usageGroup := api.Group("/user-storage")
+		usageGroup.Use(middleware.AuthMiddleware())
+		usageGroup.GET("/usage", userStorageHandler.GetUsage)
 	}
 	//=== END API Routes
 
